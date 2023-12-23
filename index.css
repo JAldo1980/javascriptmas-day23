@@ -1,75 +1,79 @@
-/* Box sizing rules */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-/* Remove default margin */
-body,
-h1,
-h2,
-h3,
-h4,
-p,
-figure,
-blockquote,
-dl,
-dd {
-  margin: 0;
-}
-
-/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
-ul[role="list"],
-ol[role="list"] {
-  list-style: none;
-}
-
-/* Set core root defaults */
-html:focus-within {
-  scroll-behavior: smooth;
-}
-
-/* Set core body defaults */
 body {
-  min-height: 100vh;
-  text-rendering: optimizeSpeed;
-  line-height: 1.5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+  background: linear-gradient(90deg, #3498db, #2ecc71);
+  background-size: 200% 100%;
+  transition: background-position 0.4s;
 }
 
-/* A elements that don't have a class get default styles */
-a:not([class]) {
-  text-decoration-skip-ink: auto;
+.container {
+  margin: 0 auto;
 }
 
-/* Make images easier to work with */
-img,
-picture {
-  max-width: 100%;
-  display: block;
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 82.8px;
+  height: 46.92px;
 }
 
-/* Inherit fonts for inputs and buttons */
-input,
-button,
-textarea,
-select {
-  font: inherit;
+.switch-container {
+  display: grid;
+  justify-content: center;
+  align-items: center;
 }
 
-/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
-@media (prefers-reduced-motion: reduce) {
-  html:focus-within {
-    scroll-behavior: auto;
-  }
-
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
 }
-/* end of css reset */
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #edf0e7;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 37.104px;
+  width: 37.104px;
+  left: 5.52px;
+  bottom: 5.52px;
+  background-color: #fffbd6;
+  transition: 0.4s;
+  background-image: url(/scrimba-logo-removebg-preview.png);
+  background-size: 30px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+input:checked + .slider {
+  background-color: #feeab9;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #feeab9;
+}
+
+input:checked + .slider:before {
+  transform: translateX(37.104px);
+}
+
+.slider.round {
+  border-radius: 46.92px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
